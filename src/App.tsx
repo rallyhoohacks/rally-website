@@ -13,8 +13,36 @@ function useScrollReveal() {
   }, [])
 }
 
+const HERO_SUB = 'The first mobile app that monitors you and your friends on a night out in real time.'
+
+/* ─── Typewriter hook ─── */
+function useTypewriter(text: string, startDelay = 1100, speed = 40) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    let i = 0
+    const start = setTimeout(() => {
+      const interval = setInterval(() => {
+        i++
+        setDisplayed(text.slice(0, i))
+        if (i >= text.length) {
+          clearInterval(interval)
+          setDone(true)
+        }
+      }, speed)
+      return () => clearInterval(interval)
+    }, startDelay)
+    return () => clearTimeout(start)
+  }, [text, startDelay, speed])
+
+  return { displayed, done }
+}
+
 /* ─── Hero ─── */
 function Hero() {
+  const { displayed, done } = useTypewriter(HERO_SUB)
+
   return (
     <section className="hero">
       <div className="hero-video-bg">
@@ -22,16 +50,30 @@ function Hero() {
         <div className="video-slot hero-slot" />
       </div>
       <div className="hero-overlay" />
-      <div className="hero-content">
-        <p className="hero-eyebrow">Introducing</p>
-        <h1 className="hero-title">Meet Rally</h1>
-        <p className="hero-sub">
-          The first mobile app that monitors you and your friends<br />
-          on a night out in real time.
-        </p>
-        <div className="hero-actions">
-          <a href="#download" className="btn btn-primary">Download App</a>
-          <a href="#demo" className="btn btn-ghost">Request Demo</a>
+      <div className="hero-body">
+        <div className="hero-content">
+          <h1 className="hero-title">
+            <span className="hero-meet">Meet </span>
+            <span className="hero-rally">
+              <span className="rally-plain">R</span>
+              <span className="rally-green">a</span>
+              <span className="rally-green">l</span>
+              <span className="rally-green">l</span>
+              <span className="rally-plain">y</span>
+            </span>
+          </h1>
+          <p className="hero-sub">
+            {displayed}
+            <span className={`type-cursor ${done ? 'cursor-done' : ''}`} />
+          </p>
+          <div className="hero-actions">
+            <a href="#download" className="btn btn-primary">Download App</a>
+            <a href="#demo" className="btn btn-ghost">Request Demo</a>
+          </div>
+        </div>
+        <div className="hero-video-right">
+          {/* Replace with <video autoPlay muted loop playsInline> */}
+          <div className="video-slot hero-video-slot" />
         </div>
       </div>
       <a href="#features" className="scroll-hint" aria-label="Scroll down">
