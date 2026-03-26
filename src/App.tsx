@@ -45,10 +45,6 @@ function Hero() {
 
   return (
     <section className="hero">
-      <div className="hero-video-bg">
-        {/* Replace this div with <video autoPlay muted loop playsInline> */}
-        <div className="video-slot hero-slot" />
-      </div>
       <div className="hero-overlay" />
       <div className="hero-body">
         <div className="hero-content">
@@ -72,8 +68,9 @@ function Hero() {
           </div>
         </div>
         <div className="hero-video-right">
-          {/* Replace with <video autoPlay muted loop playsInline> */}
-          <div className="video-slot hero-video-slot" />
+          {/* Drop hero-demo.mp4 into /public and replace this div with:
+              <video autoPlay muted loop playsInline src="/hero-demo.mp4" className="hero-video-el" /> */}
+          <video autoPlay muted loop playsInline src="/hero-demo.mp4" className="hero-video-el" />
         </div>
       </div>
       <a href="#features" className="scroll-hint" aria-label="Scroll down">

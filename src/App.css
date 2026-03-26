@@ -72,41 +72,26 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-.hero-video-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-/* full-bleed dark bg behind everything */
-.video-slot {
-  width: 100%;
-  height: 100%;
-}
-
-.hero-slot {
-  background: #050505;
+  background: #000;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  z-index: 1;
-  /* fade the right side slightly less so the video shows through */
+  z-index: 0;
   background: linear-gradient(
     to right,
-    rgba(0,0,0,0.82) 0%,
-    rgba(0,0,0,0.55) 50%,
-    rgba(0,0,0,0.15) 100%
+    rgba(0,0,0,0.9) 0%,
+    rgba(0,0,0,0.5) 55%,
+    rgba(0,0,0,0.1) 100%
   );
+  pointer-events: none;
 }
 
 /* two-column inner layout */
 .hero-body {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
@@ -118,10 +103,7 @@ body {
 }
 
 @media (max-width: 860px) {
-  .hero-body {
-    grid-template-columns: 1fr;
-    padding: 0 32px;
-  }
+  .hero-body { grid-template-columns: 1fr; padding: 0 32px; }
   .hero-video-right { display: none; }
 }
 
@@ -129,28 +111,19 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0;
 }
 
 /* ─── Hero text rise-up animation ───────────────────────────────── */
 @keyframes riseUp {
-  from {
-    opacity: 0;
-    transform: translateY(36px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero-content > * {
   opacity: 0;
   animation: riseUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-
 .hero-title   { animation-delay: 0.1s; }
-/* sub fades in just before typing starts so the container is visible */
 .hero-sub     { animation-delay: 0.9s; }
 .hero-actions { animation-delay: 0.5s; }
 
@@ -164,20 +137,14 @@ body {
   vertical-align: text-bottom;
   animation: blink 0.75s step-end infinite;
 }
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
-
-/* fade cursor out once typing is done */
 .type-cursor.cursor-done {
   animation: cursorFade 0.8s ease 1.2s forwards;
 }
-
-@keyframes cursorFade {
-  to { opacity: 0; }
-}
+@keyframes cursorFade { to { opacity: 0; } }
 
 .hero-title {
   display: block;
@@ -220,27 +187,30 @@ body {
   flex-wrap: wrap;
 }
 
-/* right side: video placeholder */
+/* right side: video */
 .hero-video-right {
   width: 100%;
   aspect-ratio: 9 / 16;
-  max-height: 70vh;
+  max-height: 75vh;
 }
 
-.hero-video-slot {
+.hero-slot {
   width: 100%;
   height: 100%;
   border-radius: 24px;
   background: #0d0d0d;
-  border: 1.5px dashed rgba(53,94,59,0.45);
+  border: 1.5px dashed rgba(53,94,59,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(53,94,59,0.5);
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  object-fit: cover; /* works when swapped to <video> */
+}
+
+.hero-video-el {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  object-fit: cover;
 }
 
 .scroll-hint {
