@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.cosmos.so)"
+      "WebFetch(domain:www.cosmos.so)",
+      "Bash(npm --version)",
+      "WebFetch(domain:lassohoohacks.com)",
+      "Bash(npm install *)",
+      "Bash(gh repo *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(dir C:\\\\Users\\\\tyler\\\\OneDrive\\\\Desktop\\\\rally-website *)",
+      "Bash(dir C:\\\\Users\\\\tyler\\\\OneDrive\\\\Desktop\\\\rally-website\\\\public *)",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tyler\\\\OneDrive\\\\Desktop\\\\rally-together-explore\" -Recurse -Directory | Select-Object -First 30 | ForEach-Object { $_.FullName })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tyler\\\\OneDrive\\\\Desktop\\\\rally-together-explore\" -File | ForEach-Object { $_.Name })",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\tyler\\\\OneDrive\\\\Desktop\\\\rally-together-explore\" -Directory | Where-Object { $_.Name -ne '.next' -and $_.Name -ne 'node_modules' } | ForEach-Object { $_.FullName })"
     ]
   }
 }
