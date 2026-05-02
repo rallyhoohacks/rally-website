@@ -8,7 +8,7 @@ Built by two UVA students for HooHacks 2026.
 
 ## What is Rally?
 
-Rally keeps your crew connected and safe on a night out. Live location sharing, automatic safety check-ins, one-tap group coordination, and a night recap — all in one app.
+Rally keeps your crew connected and safe on a night out. Live location sharing, automatic safety check-ins, one-tap group coordination, and a night recap: all in one app.
 
 **Features**
 - **Real-Time Location** — Live pins for every friend in your group, updating as the night unfolds
