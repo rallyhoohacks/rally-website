@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Rally
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**The first mobile app that monitors you and your friends on a night out in real time.**
 
-Currently, two official plugins are available:
+Built by two UVA students for HooHacks 2026.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## What is Rally?
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Rally keeps your crew connected and safe on a night out. Live location sharing, automatic safety check-ins, one-tap group coordination, and a night recap — all in one app.
 
-## Expanding the ESLint configuration
+**Features**
+- **Real-Time Location** — Live pins for every friend in your group, updating as the night unfolds
+- **Safety Check-ins** — Smart alerts when someone goes quiet or misses a check-in
+- **Group Sync** — Start a Rally, invite your crew with one tap, everyone's live on the same map
+- **Night Recap** — Automatic story of your route and highlights after the night ends
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- React + TypeScript
+- Vite
+- CSS (custom, no component library)
+- Lenis (smooth scroll)
+- Formspree (demo request form)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Team
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Name | LinkedIn |
+|------|----------|
+| Tyler Nguyen | [linkedin.com/in/tyler-nguyen2028](https://www.linkedin.com/in/tyler-nguyen2028) |
+| Sophia Ma | [linkedin.com/in/sophia-ma-729505275](https://www.linkedin.com/in/sophia-ma-729505275/) |
