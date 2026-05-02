@@ -250,8 +250,8 @@ function Actions() {
 
 /* ─── Team ─── */
 const MEMBERS = [
-  { initials: 'TN', name: 'Tyler Nguyen',  company: 'BNSF Railway', location: 'Virginia Beach, VA',  email: 'wgq4tr@virginia.edu', bg: '#1a3d1e', headshot: '/tylerheadshot.jpeg' },
-  { initials: 'SM', name: 'Sophia Ma',     company: 'StoneX',        location: 'Charlottesville, VA', email: 'hcd9vc@virginia.edu', bg: '#0f2d12', headshot: '/IMG_1720.JPG', imgStyle: { filter: 'brightness(1.3)' } },
+  { initials: 'TN', name: 'Tyler Nguyen',  company: 'BNSF Railway', location: 'Virginia Beach, VA',  email: 'wgq4tr@virginia.edu', bg: '#1a3d1e', headshot: '/tylerheadshot.jpeg',  linkedin: 'https://www.linkedin.com/in/tyler-nguyen2028' },
+  { initials: 'SM', name: 'Sophia Ma',     company: 'StoneX',        location: 'Charlottesville, VA', email: 'hcd9vc@virginia.edu', bg: '#0f2d12', headshot: '/IMG_1720.JPG', imgStyle: { filter: 'brightness(1.3)' }, linkedin: 'https://www.linkedin.com/in/sophia-ma-729505275/' },
 ]
 
 function Team() {
@@ -284,6 +284,12 @@ function Team() {
                   <rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 4l7 5 7-5"/>
                 </svg>
                 {m.email}
+              </a>
+              <a href={(m as any).linkedin} target="_blank" rel="noopener noreferrer" className="team-meta team-linkedin">
+                <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.5 1h-11C1.67 1 1 1.67 1 2.5v11c0 .83.67 1.5 1.5 1.5h11c.83 0 1.5-.67 1.5-1.5v-11C15 1.67 14.33 1 13.5 1zM5.5 13H3.5V6.5h2V13zm-1-7.4a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2zM13 13h-2v-3.25c0-.78-.28-1.25-.97-1.25-.53 0-.84.36-.98.7-.05.13-.06.3-.06.48V13H7s.03-6.5 0-6.5h2v.92c.27-.41.74-1 1.8-1 1.31 0 2.2.86 2.2 2.7V13z"/>
+                </svg>
+                LinkedIn
               </a>
             </div>
           ))}

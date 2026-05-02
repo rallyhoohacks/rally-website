@@ -1068,6 +1068,15 @@ body {
 }
 .team-email:hover { color: var(--green-light); }
 
+.team-linkedin {
+  color: #475569;
+  transition: color 0.2s;
+  margin-top: 2px;
+  text-decoration: none;
+}
+.team-linkedin svg { width: 14px; height: 14px; flex-shrink: 0; }
+.team-linkedin:hover { color: #0a66c2; }
+
 /* ─── Footer ────────────────────────────────────────────────────── */
 .footer {
   border-top: 1px solid var(--border);
