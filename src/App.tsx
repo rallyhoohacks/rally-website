@@ -138,10 +138,12 @@ const FEATURES = [
 
 function FeaturesScroll() {
   const [active, setActive] = useState(0)
+  const [revealed, setRevealed] = useState<Set<number>>(new Set())
   const stepRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    const io = new IntersectionObserver(
+    // Desktop: switches sticky phone screen
+    const activeIO = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
@@ -152,8 +154,20 @@ function FeaturesScroll() {
       },
       { threshold: 0.55 }
     )
-    stepRefs.current.forEach((el) => el && io.observe(el))
-    return () => io.disconnect()
+    // Mobile: fade-in on scroll, permanently revealed once seen
+    const revealIO = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const idx = stepRefs.current.indexOf(e.target as HTMLDivElement)
+            if (idx !== -1) setRevealed((prev) => { const s = new Set(prev); s.add(idx); return s })
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+    stepRefs.current.forEach((el) => { if (el) { activeIO.observe(el); revealIO.observe(el) } })
+    return () => { activeIO.disconnect(); revealIO.disconnect() }
   }, [])
 
   return (
@@ -167,7 +181,7 @@ function FeaturesScroll() {
           <div
             key={i}
             ref={(el) => { stepRefs.current[i] = el }}
-            className={`feature-step ${i === active ? 'step-active' : ''}`}
+            className={`feature-step ${i === active ? 'step-active' : ''} ${revealed.has(i) ? 'step-revealed' : ''}`}
           >
             <span className="step-tag">{f.tag}</span>
             <h2 className="step-title">{f.title}</h2>
@@ -176,6 +190,9 @@ function FeaturesScroll() {
               {FEATURES.map((_, j) => (
                 <span key={j} className={`dot ${j === active ? 'dot-active' : ''}`} />
               ))}
+            </div>
+            <div className="feature-step-phone">
+              <Phone activeScreen={i} />
             </div>
           </div>
         ))}

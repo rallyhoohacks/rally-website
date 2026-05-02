@@ -280,7 +280,7 @@ body {
 }
 
 @media (max-width: 860px) {
-  .features-steps-col { padding: 80px 0; gap: 80px; }
+  .features-steps-col { padding: 80px 0; gap: 48px; }
 }
 
 /* ─── Phone mockup ──────────────────────────────────────────────── */
@@ -379,6 +379,32 @@ body {
 .feature-step.step-active {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Mobile inline phone: hidden on desktop, shown on mobile */
+.feature-step-phone { display: none; }
+
+@media (max-width: 860px) {
+  .feature-step,
+  .feature-step.step-active {
+    min-height: unset;
+    padding: 0;
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .feature-step.step-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .feature-step-phone {
+    display: flex;
+    justify-content: center;
+    margin-top: 36px;
+  }
 }
 
 .step-tag {
